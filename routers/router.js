@@ -1,4 +1,13 @@
 const controller = require('../controllers/controller');
+const httpStatusCodes = require('../controllers/httpStatusCodes');
+
+
+function handleMethodNotAllowed(response) {
+    response.statusCode = httpStatusCodes.METHOD_NOT_ALLOWED
+    response.setHeader('Content-Type', 'text/plain');
+    response.end('Method Not Allowed');
+}
+
 
 function handleRouting(request, response) {
     const { url, method } = request;
@@ -16,9 +25,7 @@ function handleRouting(request, response) {
                 break;
         }
     } else {
-        response.statusCode = 405;
-        response.setHeader('Content-Type', 'text/plain');
-        response.end('Method Not Allowed');
+        handleMethodNotAllowed(response)
     }
 }
 
