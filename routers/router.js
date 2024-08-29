@@ -1,6 +1,7 @@
 const controller = require('../controllers/controller');
 const httpStatusCodes = require('../controllers/httpStatusCodes');
-const {  GET } = require('./method');
+const { GET } = require('./methods');
+const { ping, about } = require('./vaule');
 
 
 function handleMethodNotAllowed(response) {
@@ -15,10 +16,10 @@ function handleRouting(request, response) {
 
     if (method === GET) {
         switch (url) {
-            case '/':
+            case ping.value:
                 controller.handleHome(request, response);
                 break;
-            case '/about':
+            case about.value:
                 controller.handleAbout(request, response);
                 break;
             default:
