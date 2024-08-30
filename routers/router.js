@@ -1,7 +1,7 @@
 const controller = require('../controllers/controller');
 const httpStatusCodes = require('../controllers/httpStatusCodes');
 const { GET } = require('./methods');
-const { ping, about } = require('./vaule');
+const { ping, about } = require('./routes');
 
 
 function handleMethodNotAllowed(response) {
